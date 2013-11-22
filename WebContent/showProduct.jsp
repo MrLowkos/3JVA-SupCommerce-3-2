@@ -8,14 +8,15 @@
 <% String error = ""; %>
 <% final Object idParam = request.getParameter("id"); %>
 <% final DecimalFormat priceFormat = new DecimalFormat("0.00 €");%>
-<jsp:useBean id="requestedProduct" class="com.supinfo.sun.supcommerce.bo.SupProduct"/>
+<jsp:useBean id="reqProduct" class="com.supinfo.sun.supcommerce.bo.SupProduct"/>
 
 <%
 // Retrieve product with "id" parameter requested
 if(idParam != null && idParam instanceof String) {
 	try {
 		final Long idLong = Long.parseLong((String) idParam);
-		requestedProduct = SupProductDao.findProductById(idLong);
+		// Set Suproduct Bean to use it with EL
+		pageContext.setAttribute("reqProduct", SupProductDao.findProductById(idLong));
 	} catch(UnknownProductException e) {
 		error = e.getMessage();
 	} catch(NumberFormatException e) {
@@ -57,12 +58,12 @@ if(idParam != null && idParam instanceof String) {
 			<div class="col-sx-12 col-sm-6 col-md-4 col-lg-3">
 				<article class="panel panel-primary">												
 					<header class="panel-heading">
-						<h3><span class="glyphicon glyphicon-tag"></span>&nbsp; Product ID: ${requestedProduct.id}</h3>
+						<h3><span class="glyphicon glyphicon-tag"></span>&nbsp; Product ID: ${reqProduct.id}</h3>
 					</header>
 					<section class="panel-body">
-				       <p>Product name: ${requestedProduct.name}</p>
-				       <p class="description">Product description: ${requestedProduct.content}</p>
-				       <p>Product price: <%=  priceFormat.format(requestedProduct.getPrice()) %></p>
+				       <p>Product name: ${reqProduct.name}</p>
+				       <p class="description">Product description: ${reqProduct.content}</p>
+				       <p>Product price: <%=  priceFormat.format(reqProduct.getPrice()) %></p>
 				    </section>
 			    </article>
 		    </div>
