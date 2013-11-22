@@ -16,7 +16,7 @@ if(session.getAttribute("username") != null && session.getAttribute("username") 
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="${rootPath}">SupCommerce 3.1</a>
+			<a class="navbar-brand" href="${rootPath}">SupCommerce 3.2</a>
 		</header>
 		<nav class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
