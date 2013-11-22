@@ -43,14 +43,14 @@
 				<div class="col-sx-12 col-sm-6 col-md-4 col-lg-3">
 					<article class="panel panel-primary">												
 						<header class="panel-heading">
+							<form class="pull-right" action="${pageContext.servletContext.contextPath}/auth/removeProduct?id=<%= p.getId() %>" method="post">
+								<button type="submit" class="close" >&times;</button>
+							</form>
 							<h3>
 								<a href="${pageContext.servletContext.contextPath}/showProduct.jsp?id=<%= p.getId() %>">
 									<span class="glyphicon glyphicon-tag"></span>&nbsp; Product Id: <%= p.getId() %>
 								</a>
 							</h3>
-							<form class="pull-right" action="${pageContext.servletContext.contextPath}/auth/removeProduct?id=<%= p.getId() %>" method="post">
-								<button type="submit" class="close" >&times;</button>
-							</form>
 						</header>
 						<section class="panel-body">
 					       <p>Product name: <%= p.getName() %></p>
